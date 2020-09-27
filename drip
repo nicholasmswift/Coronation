@@ -1,0 +1,14 @@
+//drip
+
+// inspired by disintegration
+// by Ritchse
+// instagram.com/ritchse
+ 
+osc(5,.1,.2)
+  .kaleid(2)
+  .modulate(noise(6,.1),.422)
+  .diff(o0)
+  .modulateRotate(osc(3).modulate(osc(10),.11))
+  //.scale(.72).color(0.9,1.014,1)
+  .invert().brightness(-0.1).saturate(1)
+  .out()
