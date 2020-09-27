@@ -1,0 +1,51 @@
+// inspired by Will Humphreys “acid bus seat”
+// https://github.com/TheWispy
+
+osc(200)
+  .color(0.5,0.1,0.8)
+  .rotate(0.11, 0.1)
+  .modulate(osc(10).rotate(0.3).add(o0, 0.1))
+  .add(osc(20,0.01,1).color(0,0.8,1))
+  .scrollX(0.1,0.1)
+.out(o0)
+osc(30,0.05, 0.7)
+  .kaleid(4)  
+  .color(1,1,1)
+  .diff(o0)
+  .modulate(o1,0.06)
+.out(o1)
+osc(40,0.05,0.7)
+  .modulate(osc(400),1)
+  .color(0,1,1)
+  .rotate(0.5,0.2)
+  .diff(o1)
+.out(o2)
+render(o2)
+
+
+// maybe this?
+
+// acid bus seat
+// by Will Humphreys
+// https://github.com/TheWispy
+
+osc(200)
+  .color(0.5,0.1,0.8)
+  .rotate(0.11, 0.1)
+  .modulate(osc(10).rotate(0.3).add(o0, 0.1))
+  .add(osc(20,0.01,1).color(0,0.8,1))
+  .scrollX(0.1,0.1)
+.out(o0)
+osc(30,0.05, 0.7)
+  .kaleid(4)  
+  .color(1,1,1)
+  .diff(o0)
+  .modulate(o1,0.06)
+.out(o1)
+osc(40,0.05,0.7)
+  .modulate(osc(400),1)
+  .color(0,1,1)
+  .rotate(0.5,0.2)
+  .diff(o1)
+.out(o2)
+render(o2)
