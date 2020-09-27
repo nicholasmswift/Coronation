@@ -1,0 +1,15 @@
+// inspired by Olivia Jack
+// twitter: @_ojack_
+
+pattern = () => osc(200, 0).kaleid(4).color(.8,0.9,.6).scale(0.5, 0.5)
+//
+pattern()
+  .scrollX(0.1, 0.01)
+  .mult(pattern(4)).kaleid(6)
+  .modulate(osc(20,0.1,1).kaleid(12))
+  .color(1,1,1).colorama(5)
+  .out(o0)
+
+
+osc(200).color(1,1,2).out(o1)
+render(o0)
