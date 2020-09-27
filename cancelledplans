@@ -1,0 +1,11 @@
+// inspired by Débora Falleiros Gonzales
+// https://www.gonzalesdebora.com/
+
+  osc(50)
+  .rotate(0)
+  .add(noise(7, 0.5))
+  .modulatePixelate(noise(0.8,0.1),1)
+  .color(0, 2, 2)
+  .colorama(0.9 )
+.out(o0)
+render(o0)
