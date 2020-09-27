@@ -1,0 +1,24 @@
+//find your love
+//tarpallin2
+
+voronoi(50,20)
+  .add(shape(100).scrollX(0.14).scrollY(0.1).scale(1.2))
+  .add(shape(100).scrollX(-0.14).scrollY(0.1).scale(1.2))
+  .add(shape(3).scale(.9,1.4).scrollY(-0.09))
+  //.modulateScale(osc(4).kaleid(10))
+  .out(o0)
+osc(100,-.1,2)
+  .color(1,0,0)
+  //.colorama()
+  .pixelate(50,50)
+  .modulateScale(noise(5))
+  .rotate(0,0.5)
+  .kaleid(6)
+  .out(o1)
+src(o1)
+  .mult(o0)
+  .contrast(100)
+  .blend(o2).blend(o2)//.blend(o2)//.blend(o2)
+  .out(o2)
+
+render(o2)
