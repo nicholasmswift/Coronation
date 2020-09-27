@@ -1,0 +1,25 @@
+// lucky s12ck0_13
+
+// inspired by Rodrigo Velasco
+// https://yecto.github.io/
+
+osc(107, -0.01, 0.7)
+  .color(1, 1, 1)
+  .luma()
+  .rotate(0, -0.08)
+  .kaleid(3)
+  .modulateRotate(o1, 0.4)
+  .out(o0)
+osc(33)
+  .rotate(2, 0.8)
+  .modulateRotate(o0, () => (a.fft[0]))
+  .out(o1)
+shape(4).scale(2.7).out(o2)
+
+src(o0)
+  //.colorama(03)//.color(0.4,0.4,-1.1)
+  .mult(o2)
+  //.blend(o2).blend(o2)//.blend(o2).blend(o2)
+  .out(o3)
+
+render(o3) 
