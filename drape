@@ -1,0 +1,9 @@
+//drape
+
+osc(32)
+  .color(0, 0, 0)
+  .add(osc(5).color(.08, .02, .02).scale(0.023).rotate(0.001))
+  .modulate(noise(2, .1).scale(2, 0.1))
+  .add(noise(20, 0).color(0.1,.05,0.05))
+  .scale(2, 1, 1)
+.out(o0);
