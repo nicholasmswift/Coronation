@@ -1,0 +1,18 @@
+// EMX1_22
+
+//inspired by corrupted screensaver
+//by Ritchse
+//instagram.com/ritchse
+  
+voronoi(35,0.15)
+  	.modulateScale(osc(8).rotate(Math.sin(time/2)*2),.9)
+  	.thresh(.6)
+	.modulateRotate(osc(7),.4)
+	.thresh(.7)
+  	.diff(src(o0).scale(18))
+	.modulateScale(osc(1).modulateRotate(o0,.74))
+	.diff(src(o0).rotate([-.012,.01,-.002,0]).scrollY(0,[-1/19980.0,0].fast(0.1)))
+	.brightness([-.02,-.17].smooth().fast(.5))
+    .luma()
+    //.colorama()
+	.out()
