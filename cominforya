@@ -1,0 +1,60 @@
+//they’re comin for ya
+
+osc( 215, 0.1, 2 )
+///*
+.modulate(
+  osc( 2, -0.3, 100 )
+  .rotate(15)
+)
+///*
+.mult(
+  osc( 215, -0.1, 2)
+  .pixelate( 50, 50 )
+)
+.add(
+  osc(40,0.1,2)
+  .rotate(0.8)
+)
+///*
+.color( 0.9,0.9, 0 )
+.color(0,1,0)
+///*
+.modulate(
+  osc( 6, -0.1 )
+  .rotate( 9 )
+)
+/*
+.add(
+  osc( 10, -0.9, 900 )
+  .color(1,0,1)
+)/**/
+///*
+.mult(
+  shape(900, 0.2, 1)
+  .luma()
+  //.repeatX(2)
+  //.repeatY(2)
+  //.colorama(10)
+)
+//.scrollX(0, ({time}) => -0.5*Math.sin(time*0.01)*0.01 )
+.scrollX(1,0.2)
+//.kaleid(4)
+///*
+.modulate(
+  osc( 9, -0.3, 900 )
+  .rotate( 6 )
+)
+.add(
+  osc(5).add(noise(5, 2)).color(0.1, 0.1, 0.1).colorama(0.1)
+  )
+///*
+.add(
+  osc(2,-5).colorama(16)
+  .modulate(
+    osc( 10, -0.5 )
+    .rotate( 9 )
+  )
+  .color(1,0,0)
+  //.pixelate()
+)/**/
+.out()
