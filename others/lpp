@@ -1,0 +1,8 @@
+//lpp jam voice extension thing (purple, blue, yellow)
+
+osc(180, 0.1, 0).color(1, 0.1, 2)
+.mult(osc(20, 0.01, 0)).repeat(2, 20).rotate(0.5).modulate(o1).kaleid(6)
+.scale(1, 1).diff(o1).out(o0)
+osc(0.5  , 0.2, 0).color(1, 0.7, 0.1).mult(osc(40)).modulateRotate(o0, 0.2)
+.rotate(0.2).kaleid(6).out(o1)
+render(o0)
