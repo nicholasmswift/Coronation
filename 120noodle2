@@ -1,0 +1,16 @@
+// 120noodle_pt2
+
+// inspired by Débora Falleiros Gonzales
+// https://www.gonzalesdebora.com/
+
+osc(10,0.1,2)
+  .scale(20)
+  .kaleid(8)
+  .color(0,.2,.8)
+  .modulate(noise(10,1))
+.add(noise(200, .5))
+  //.repeat(5)
+  .color(0, 0.6, 0.4)
+  .kaleid(8)
+  //.colorama(0.7, 0.5)
+.out()
