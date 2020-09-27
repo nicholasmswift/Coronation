@@ -1,0 +1,109 @@
+TIPS
+
+https://visualizer.solquemal.com/04-gray-scott/
+
+1.57 = 90deg
+Math.PI/4
+
+//COOL SPIRAL THING
+gradient().diff(src(o1).scale(0.8).rotate(0.2)).out(o1)
+
+//MOVING WHIRLY POOL THING
+rotateFunc = () => Math.sin(time / 2)
+saturationFunc = () => Math.sin(time)
+spiral = () => osc(2)
+  .colorama(0.1)
+  .diff(src(o1).scale(0.9).rotate(rotateFunc))
+  .blend(src(o1), 0.3)
+  .saturate(saturationFunc)
+  .out(o1)
+spiral().out(o0)
+
+
+// CLOUDY FEEDBACK THING
+src(o0).mask(shape(4,0.8)).saturate(()=>Math.abs(Math.sin(time/4))).luma(0.2,0.2).scrollX(0.01)
+  .modulate(o3,0.2)
+  .blend(o3,0.9).scale(()=>Math.sin(time/2)/100+1).out(o3)
+
+
+// FAST FUNCION FOR BPM
+osc(10,.1,1).kaleid().out(o0)
+osc(100,0.1,1).rotate(1.57).out(o1)
+osc(100,0.1).modulateScale(osc(50,0.01)).luma(0.5).modulate(o1,0.5).blend(o0,0.9).out(o3)
+
+osc([10,20,30].fast(140/60),0.1).out(o0)
+
+src(o0).diff(o1).blend(o0,2).out(o2)
+src(o2).diff(o1).out(o3)
+
+
+//NOISE WITHOUT NOISE
+
+osc(100,0.1,1).modulateScale(osc(50,0.1)).modulateScale(osc(2).modulateScale(osc(5))).out(o0)
+src(o0).diff(src(o0).rotate(Math.PI/4)).out(o1)
+src(o1).modulateScale(src(o2)).out(o2)
+src(o2).modulateRotate(src(o0)).out(o3)
+
+
+//SWITCHING BUFFERS OVER TIME (arrays)
+osc(100).out(o1)
+osc(10).out(o0)
+osc(1000).out(o2)
+
+solid()
+  .add(src(o0),[1,0,0])
+  .add(src(o1),[0,1,0])
+  .add(src(o2),[0,0,1])
+.out(o3)
+
+
+//CREATE YOUR OWN FUNCTION
+setFunction({
+  name: 'myOsc', // name that will be used to access function in js as well as in glsl
+  type: 'src', // can be 'src', 'color', 'combine', 'combineCoords'. see below for more info
+  inputs: [
+    {
+      name: 'freq',
+      type: 'float',
+      default: 0.2
+    },
+    {
+      name: 'sync',
+      type: 'float',
+      default: 0.1
+    },
+    {
+      name: 'offset',
+      type: 'float',
+      default: 0.0
+    }
+  ],
+    glsl: `
+      vec2 st = _st;
+      float r = sin((st.x-offset*2/freq+time*sync)*freq)*0.5  + 0.5;
+      float g = sin((st.x+time*sync)*freq)*0.5 + 0.5;
+      float b = sin((st.x+offset/freq+time*sync)*freq)*0.5  + 0.5;
+      return vec4(r, g, b, 1.0);
+   `
+})
+myOsc(100).out(o0)
+render()
+
+
+// @naoto_hieda
+solid(0.2,0.6,0.9).layer(osc(31.4,0).thresh(0.7).luma().modulate(osc(4,1).rotate(1),0.05).color(0,0,0)).layer(osc(31.4,0).thresh(0.7).luma().modulate(osc(4,1).rotate(1),0.1)).out()
+
+
+// Monochrome Memoar
+// by Rangga Purnama Aji
+// https://ranggapurnamaaji1.wixsite.com/portfolio
+
+voronoi(50,1)
+  .luma(0.5).add(shape(1,1).luma(1))
+  .modulate(osc(-1000,-1)
+            .modulate(osc().luma()))
+  .blend(o0)
+  .blend(o0)
+  .blend(o0)
+  .blend(o0)
+  .out()
