@@ -1,0 +1,10 @@
+// e_e @Sebzabs 
+
+osc(0.9, 1.06, 10.8)
+  .rotate(102, 10.3)
+  .mult(osc(20).thresh(0.4).rotate(0, -0.0205))
+  .diff(osc(22).thresh(0.8).rotate(0, -0.0209).scrollY(-1))
+  .mult((osc(240).thresh(0.5).rotate(1, -0.0203).scrollY(-1)),0.3)
+  .modulate(osc(2.3,-0.15))
+  .modulateScale(noise(0.5,-0.15))
+  .out(o0)
