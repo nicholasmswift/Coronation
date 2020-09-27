@@ -1,0 +1,40 @@
+//s12ck0_11
+// inspired by Zach Krall
+// http://zachkrall.online/
+
+osc(10, 0.9, 300)
+.color(0.9, 0.7, 0.8)
+.diff(
+  osc(40, 0.2, 100)
+  .color(0.9, 0.9, 0.9)
+  .rotate(0.18)
+  .pixelate(2)
+  //.kaleid()
+)
+.scrollX(10)
+.color(3,2,2)
+.colorama()
+//.luma()
+.repeatX(8)
+.repeatY(8)
+.modulate(
+  osc(1, -0.9, 300)
+)
+.scale(2)
+.out(o0)
+shape(4).scale(2.7).diff(o3).out(o1)
+src(o0)
+  //.colorama(03)//.color(0.4,0.4,-1.1)
+  .mult(o1)
+  .diff(o0)
+  //.add(o3)
+  .blend(o2)//.blend(o2)//.blend(o2).blend(o2)
+  .out(o2)
+shape(10)
+  .modulateScale(
+    noise(100,2)
+    .kaleid(8)
+  )
+  //.rotate(0,.4)
+  .out(o3)
+render(o2)
