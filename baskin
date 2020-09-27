@@ -1,0 +1,20 @@
+// youtube vid of carole baskin lol
+
+// inspired by Olivia Jack
+// https://ojack.github.io
+//s0.initScreen()
+src(s0)
+  //.brightness()
+  .saturate()
+  .add(o0)
+  .out(o1)
+osc(60, 0, 0.8)
+  .color(1.14, 0.6,.0)
+  .rotate(0.92, 0.3)
+  .pixelate(2, 10)
+  .mult(osc(400, 0.03).thresh(0.4).rotate(0, -0.02))
+  .modulateRotate(osc(20, 0).thresh(0.3, 0.6), 1)
+  .modulate(noise(2,.2).color(05,05,05))
+  .color(.5,.5,.5)
+  .out(o0)
+render(o1)
