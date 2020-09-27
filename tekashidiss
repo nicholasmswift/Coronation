@@ -1,0 +1,17 @@
+// tekashi_diss_track_
+
+osc(4, 0.1, 8)
+  //.color(1.04,0, -1.1)
+  .rotate(0.30, 0.1)
+  .pixelate(2, 20)
+  .modulate(noise(1), () => 15 * Math.sin(0.08 * time))
+  .modulateScale(osc(10))
+  .out(o0)
+
+shape(40).scale(2.7).modulate(noise(10)).out(o1)
+src(o0)
+  //.colorama(03)//.color(0.4,0.4,-1.1)
+  .mult(o1)
+  .blend(o2).blend(o2)//.blend(o2).blend(o2)
+  .out(o2)
+render(o2)
