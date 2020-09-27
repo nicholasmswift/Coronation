@@ -1,0 +1,7 @@
+osc(100).modulate(noise(10,0.1)).color(0.9,0.2,0.6).colorama().diff(o1).diff(o3).out(o0)
+
+osc(500,0).color(05,05,05).out(o1)
+
+osc(()=>cc[21]*100).color(0.1,0.1,0.1).add(shape(3).color(0,()=>cc[21]*1,0).modulate(osc( 10 ,.1,.1) ) ).out(o3)
+
+render(o0)
