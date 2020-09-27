@@ -1,0 +1,6 @@
+// fleabag thing
+
+osc(10,2).out(o0)
+osc(10).modulateRotate(noise(30,1).pixelate(100,100)).diff(o0).out(o1)
+osc(3).rotate(1,1).kaleid(90).colorama(7).color(0.2,0.1,0.3).pixelate().diff(o1).out(o2)
+render(o2)
