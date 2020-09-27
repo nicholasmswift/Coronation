@@ -1,0 +1,9 @@
+// inspired by Rodrigo Velasco
+
+
+osc(10, 0.2, 0).kaleid().rotate(1).color(2, 2, 1).modulate(o3, 0.8).modulate(noise(5)).diff(o3).out(o0)
+//bleh
+noise(() => (()=>cc[21],()=>cc[22],()=>cc[23])).color(0, 1, 2).out(o1)
+osc(30, 0.2, 0).out(o2)
+shape(4).scale(10).color(()=>cc[21],()=>cc[22],()=>cc[23]).out(o3)
+render(o0)
