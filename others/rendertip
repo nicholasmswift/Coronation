@@ -1,0 +1,11 @@
+rendering tip
+
+* 		kin if you are using Chrome you can use
+* 		
+* 		// start video
+* 		vidRecorder.start()
+* 		
+* 		// stop video and download
+* 		vidRecorder.stop()    
+    * 		:PartyParrot: 1 
+* 		 It should give you a webm file. I usually convert it to mp4 or similar with ffmpeg to use in editing software or for social apps.  
