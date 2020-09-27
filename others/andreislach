@@ -1,0 +1,26 @@
+//by Andrei Slach during soloquemal workshop
+//@HypnagogiaTV
+//@hypnagogic_states
+
+osc(10,0.3,1.1).saturate(3).blend(noise(10,0.5)).out(o1)
+
+src(o1)
+.diff(src(o1).scale(0.9).rotate(0.5))
+.rotate(()=>Math.sin(time/5)/10)
+.diff(osc(3,0.1).color(3,2,1))
+.scale(1.002,1.)
+.blend(o1,0.3)
+.out(o2)
+
+osc(50,0.01).diff(osc(50,0.01).rotate(1.57)).out(o3)
+
+src(o2)
+.mask(shape(4,0.8)).saturate(()=>Math.abs(Math.sin(time/4)))
+.scrollX(0.01)
+.luma(0.4,0.2)
+.modulate(o0,-0.1)
+.blend(o0,0.9).rotate(0.0002)
+.out(o0)
+
+
+render(o0)
