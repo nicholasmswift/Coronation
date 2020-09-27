@@ -1,0 +1,11 @@
+// counting on earth
+
+osc(100,0.2)
+  .color(0,1,0)
+  .mult(noise(100,5))
+  .modulate(noise(10))
+  //.rotate(80)
+  //.kaleid(4)
+  .diff(osc(100).color(1.69,0.2,0.2).modulate(noise(10)).thresh())
+  .out()
+render(o0)
