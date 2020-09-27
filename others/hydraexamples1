@@ -1,0 +1,81 @@
+// 2/23/20
+
+hydra examples
+
+https://naotohieda.com/blog/hydra-book/
+
+FIND A WAY TO ISOLATE AUDIO GOING IN FOR REACTIVITY (Kick drum, bassline, etc. , soundcraft?)
+
+// by Zach Krall
+// http://zachkrall.online/
+
+osc(10, 0.9, 300)
+.color(0.9, 0.7, 0.8)
+.diff(
+  osc(45, 0.3, 100)
+  .color(0.9, 0.9, 0.9)
+  .rotate(0.18)
+  .pixelate(12)
+  .kaleid()
+)
+.scrollX(10)
+.colorama()
+.luma()
+.repeatX(4)
+.repeatY(4)
+.modulate(
+  osc(1, -0.9, 300)
+)
+.scale(2)
+.out()
+
+//*****************************************************************************//
+
+// by Olivia Jack
+
+osc(20, 0.03, 1.7).kaleid().mult(osc(20, 0.001, 0).rotate(1.58)).blend(o0, 0.94).modulateScale(osc(10, 0),-0.03).scale(0.8, () => (1.05 + 0.1 * Math.sin(0.05*time))).out(o0)
+
+//*****************************************************************************//
+
+/// // by Rodrigo Velasco
+// https://yecto.github.io/
+
+osc(3, 0.2, 0).color(2, 0.7, 1).modulate(o1, 0.8).diff(o1).out(o0)
+osc(() => (a.fft[0]*39), 0.2, 0).color(0, 1, 2).rotate(1.57).out(o1)
+osc(30, 0.2, 0).out(o2)
+
+//*****************************************************************************//
+
+// by Débora Falleiros Gonzales
+// https://www.gonzalesdebora.com/
+
+osc(5).add(noise(5, 2)).color(0, 0, 3).colorama(0.4).out()
+
+//*****************************************************************************//
+
+// https://medium.com/@driangle/live-coding-of-visuals-with-hydra-and-leap-motion-f25d3ee670b8
+osc(100, 0.1, 0.9)
+  .rotate(() => Math.sin(0.01 * time) * 4)
+  .saturate(() => 1 + Math.sin(0.001 * time) * 3)
+  .modulate(osc(0.01, 0.1).rotate(() => 10 * Math.sin(0.01 * time)))
+  .modulate(noise(() => Math.sin(0.001 * time) * 2 + 1))
+  .add(shape(3).rotate(Math.PI))
+  .out(o0)
+
+osc(0.001, 900, 0.8).diff(o0).modulate(o1, 0.1).out(o1)
+
+render(o1)
+
+
+//*****************************************************************************//
+
+// by Olivia Jack
+// https://ojack.github.io
+
+osc(6, 0, 0.8)
+  .color(1.14, 0.6,.80)
+  .rotate(0.92, 0.3)
+  .pixelate(20, 10)
+  .mult(osc(40, 0.03).thresh(0.4).rotate(0, -0.02))
+  .modulateRotate(osc(20, 0).thresh(0.3, 0.6), () => 0.1 + mouse.x * 0.002)
+  .out(o0)
