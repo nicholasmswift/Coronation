@@ -1,0 +1,18 @@
+//s12ck0_8
+// inspired by Olivia Jack
+// https://ojack.github.io
+
+osc(40, 0.1, 08)
+  .modulate(noise(4))
+  .color(.4,0.4, -1.1)
+  .rotate(0.30, 0.2)
+  //.pixelate(2, 20)
+  .modulate(noise(2.5,.4).kaleid(12), .1)
+  .out(o0)
+shape(4).scale(2.7).out(o1)
+src(o0)
+  .colorama(02)//.color(0.4,0.4,-1.1)
+  .mult(o1)
+  .blend(o2).blend(o2)//.blend(o2).blend(o2)
+  .out(o2)
+render(o2)
