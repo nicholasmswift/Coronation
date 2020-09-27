@@ -1,0 +1,21 @@
+//another, not mine
+
+rotateFunc = () => Math.sin(time / 2)
+saturationFunc = () => Math.sin(time)
+spiral = () => osc(2)
+  .colorama(0.1)
+  .diff(src(o1).scale(0.9).rotate(rotateFunc))
+  .blend(src(o1), 0.3)
+  .saturate(saturationFunc)
+  .out(o1)
+
+spiral()
+render(o1)
+
+osc(30, 0.04).diff(osc(28, 0.02).rotate(1.57))
+  .diff(src(o1))
+  .out(o2)
+src(o1).modulate(src(o2))
+  .saturate(0.6)
+  .out(o3)
+render(o3)
